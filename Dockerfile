@@ -11,15 +11,14 @@ RUN npm install -g inherits \
   && npm install -g \
   jasmine-node \
   jasmine-reporters@1.0.0 \
-  protractor-linkuisref-locator \
   karma \
   karma-firefox-launcher \
   karma-jasmine \
   karma-junit-reporter \
-  karma-ng-scenario
+  karma-ng-scenario && \
+  rm -rf /root/.npm/
 
 ENV NODE_PATH /usr/lib/nodejs/:/usr/local/lib/node_modules/
-ENV PATH /usr/local/firefox:/usr/lib/node_modules/bin:/usr/bin:/bin
 
 VOLUME ["/data"]
 
