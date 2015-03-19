@@ -3,12 +3,13 @@ FROM muccg/python-base:debian8-2.7
 MAINTAINER ccg <devops@ccg.murdoch.edu.au>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  npm nodejs nodejs-legacy iceweasel xvfb && \
+  npm nodejs nodejs-legacy iceweasel xvfb git && \
   apt-get autoremove -y --purge && \
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN npm install -g inherits \
   && npm install -g \
+  bower \
   jasmine-node \
   jasmine-reporters@1.0.0 \
   karma \

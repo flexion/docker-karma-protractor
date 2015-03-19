@@ -5,11 +5,20 @@ command="$1"
 echo "COMMAND: $command"
 
 if [ "$command" = "karma" ]; then
+    shift
+
+    bowerfile="$1"
+    shift
+    echo "installing bower dependencies from file: $bowerfile"
+    (mkdir /bower &&
+        cd /bower &&
+        cp "$bowerfile" . &&
+        bower install --allow-root --config.interactive=false)
+
     echo "Starting X server"
     Xvfb :0 &
-    echo "Sleeping"
-    sleep 10
-    shift
+    sleep 2
+
     echo "Launching Karma, arguments: $*"
     DISPLAY=:0 /usr/local/lib/node_modules/karma/bin/karma start --single-run $*
     exit $?
