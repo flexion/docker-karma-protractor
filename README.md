@@ -46,3 +46,5 @@ Example usage:
 	docker run -v $PWD:/app karma
 
 	docker run -v $PWD:/app --link nginx:web protractor
+
+	docker run -v $PWD:/app -e BASE_URL='http://angularjs.org' -e USER_ID=$EUID -e RUN_NPM_INSTALL=true protractor
