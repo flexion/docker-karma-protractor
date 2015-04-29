@@ -57,7 +57,9 @@ elif [ "$command" = "protractor" ]; then
 
     # check if Selenium server is listening @ port 4444
     if nc -z localhost 4444; then
-        BASE_URL=$(echo $WEB_PORT | sed 's/tcp/http/')
+        if [ -z "$BASE_URL" ]; then
+            BASE_URL=$(echo $WEB_PORT | sed 's/tcp/http/')
+        fi
         grunt protractor --baseUrl="$BASE_URL"
     else
         echo "Selenium server is not available"
@@ -65,7 +67,7 @@ elif [ "$command" = "protractor" ]; then
     fi
 fi
 
-echo "[RUN]: Builtin command not provided [karma]"
+echo "[RUN]: Builtin command not provided [karma,protractor,no-bootstrap]"
 echo "[RUN]: $@"
 
 exec "$@"

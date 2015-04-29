@@ -13,13 +13,15 @@ To add protractor support to your project an easy way is to run `yo protractor` 
 
 ## Environment variables
 
-RUN_NPM_INSTALL - true/false - If true, npm install is run in the app's directory to install npm packages specified in the package.conf file. Default false.
+`BASE_URL` - url - For end-to-end test BASE_URL will be passed to protractor and override the configured baseUrl value in the protractor.conf.js file. If BASE_URL is not set it will be created from the linked web alias described below. When testing a web app that runs inside another docker container linking is the prefered way of doing it.
 
-RUN_BOWER_INSTALL - true/false - If true, bower install is run int he app'd directory to install bower components specified in the bower.json file. Default true.
+`RUN_NPM_INSTALL` - true/false - If true, `npm install` is run in the app's directory to install npm packages specified in the package.conf file. Default `false`.
 
-USER_ID - number - Specifies number of the user id that the local karma user inside the docker container will get. The test will be run as this user. It should be set to the same user id as your normal user. Otherwise you will not have full access to files created by the container, such as reports and installed file from npm and bower. Your local user id can be fetch from $(id -u) or $EUID. Default value is 1000.
+`RUN_BOWER_INSTALL` - true/false - If true, `bower install` is run int he app'd directory to install bower components specified in the bower.json file. Default `true`.
 
-GROUP_ID - number - Specifies the number of the user's effective group id. See USER_ID for details. Your local user id can be fetch from $(id -g) or $EGID. Default value is 1000.
+`USER_ID` - number - Specifies number of the user id that the local karma user inside the docker container will get. The test will be run as this user. It should be set to the same user id as your normal user. Otherwise you will not have full access to files created by the container, such as reports and installed file from npm and bower. Your local user id can be fetch from `$(id -u)` or `$EUID`. Default value is `1000`.
+
+`GROUP_ID` - number - Specifies the number of the user's effective group id. See `USER_ID` for details. Your local user id can be fetch from `$(id -g)` or `$EGID`. Default value is `1000`.
 
 ## Volumes
 
